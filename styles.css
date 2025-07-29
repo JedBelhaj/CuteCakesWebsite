@@ -108,6 +108,7 @@ body {
     background: var(--secondary-color);
     border-radius: 10px;
     animation: bounce 1.5s infinite ease-in-out;
+    z-index: 2;
 }
 
 .cake-base {
@@ -148,9 +149,12 @@ body {
     width: 3px;
     height: 15px;
     background: #8b4513;
-    top: 15px;
-    left: 50%;
+    bottom: 55px;
+    left: 48%;
     transform: translateX(-50%);
+    z-index: 1;
+    animation: bounce 1.5s infinite ease-in-out;
+    animation-delay: -1.2s;
 }
 
 .flame {
@@ -159,10 +163,12 @@ body {
     height: 8px;
     background: radial-gradient(circle, #ff6b35, #f7931e);
     border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-    top: 8px;
-    left: 50%;
+    bottom: 68px;
+    left: 46.2%;
     transform: translateX(-50%);
-    animation: flicker 1s infinite alternate;
+    z-index: 1;
+    animation: flicker 1s infinite alternate, bounce 1.5s infinite ease-in-out;
+    animation-delay: 0s, -1.2s;
 }
 
 @keyframes bounce {
