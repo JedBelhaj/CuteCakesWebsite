@@ -117,151 +117,120 @@ const currentImageSpan = document.getElementById('currentImage');
 const totalImagesSpan = document.getElementById('totalImages');
 const modalImageContainer = document.querySelector('.modal-image-container');
 
-// Gallery Images Database
-const galleryImages = [
-    // Birthday Cakes Collection
-    {
-        src: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800&h=800&fit=crop",
-        title: "Gâteau d'Anniversaire",
-        description: "Trois étages, décoration florale élégante",
-        category: "cakes",
-        itemId: "birthday-cakes"
-    },
-    {
-        src: "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=800&h=800&fit=crop",
-        title: "Gâteau d'Anniversaire",
-        description: "Design coloré avec bougies festives",
-        category: "cakes",
-        itemId: "birthday-cakes"
-    },
-    {
-        src: "https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=800&h=800&fit=crop",
-        title: "Gâteau d'Anniversaire",
-        description: "Style moderne avec décoration en fondant",
-        category: "cakes",
-        itemId: "birthday-cakes"
-    },
+// Gallery Images Database - Product-specific collections
+const galleryImages = {
+    'fraise-vanille': [
+        {
+            src: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800&h=800&fit=crop",
+            title: "🍓 Fraise Vanille",
+            description: "Gâteau moelleux à la crème chantilly maison avec fraises fraîches"
+        },
+        {
+            src: "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=800&h=800&fit=crop",
+            title: "🍓 Fraise Vanille",
+            description: "Vue détaillée de la décoration délicate aux fraises"
+        },
+        {
+            src: "https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=800&h=800&fit=crop",
+            title: "🍓 Fraise Vanille",
+            description: "Présentation élégante avec garniture de fraises et crème"
+        }
+    ],
     
-    // Wedding Cakes Collection
-    {
-        src: "https://images.unsplash.com/photo-1558301211-0d8c8ddee6ec?w=800&h=800&fit=crop",
-        title: "Gâteau de Mariage",
-        description: "Design romantique, roses en sucre délicates",
-        category: "cakes",
-        itemId: "wedding-cakes"
-    },
-    {
-        src: "https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=800&h=800&fit=crop",
-        title: "Gâteau de Mariage",
-        description: "Élégance classique à plusieurs étages",
-        category: "cakes",
-        itemId: "wedding-cakes"
-    },
-    {
-        src: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=800&h=800&fit=crop",
-        title: "Gâteau de Mariage",
-        description: "Design minimaliste et raffiné",
-        category: "cakes",
-        itemId: "wedding-cakes"
-    },
+    'chocodream': [
+        {
+            src: "https://images.unsplash.com/photo-1558301211-0d8c8ddee6ec?w=800&h=800&fit=crop",
+            title: "🍫 ChocoDream",
+            description: "Gâteau chocolat noir premium avec noisettes grillées"
+        },
+        {
+            src: "https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=800&h=800&fit=crop",
+            title: "🍫 ChocoDream",
+            description: "Texture riche et onctueuse du chocolat noir artisanal"
+        },
+        {
+            src: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=800&h=800&fit=crop",
+            title: "🍫 ChocoDream",
+            description: "Finition parfaite avec ganache chocolat et éclats de noisettes"
+        }
+    ],
 
-    // Cupcakes Collection
-    {
-        src: "https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=800&h=800&fit=crop",
-        title: "Cupcakes Assortis",
-        description: "Différentes saveurs et décorations colorées",
-        category: "cupcakes",
-        itemId: "cupcakes-assorted"
-    },
-    {
-        src: "https://images.unsplash.com/photo-1599785209707-a456fc1337bb?w=800&h=800&fit=crop",
-        title: "Cupcakes Assortis",
-        description: "Collection gourmande aux multiples parfums",
-        category: "cupcakes",
-        itemId: "cupcakes-assorted"
-    },
-    {
-        src: "https://images.unsplash.com/photo-1587241321921-91a834d6d191?w=800&h=800&fit=crop",
-        title: "Cupcakes Assortis",
-        description: "Présentation élégante sur plateau",
-        category: "cupcakes",
-        itemId: "cupcakes-assorted"
-    },
+    'cupcakes-rainbow': [
+        {
+            src: "https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=800&h=800&fit=crop",
+            title: "🌈 Cupcakes Rainbow",
+            description: "Collection colorée de 6 cupcakes assortis aux saveurs variées"
+        },
+        {
+            src: "https://images.unsplash.com/photo-1599785209707-a456fc1337bb?w=800&h=800&fit=crop",
+            title: "🌈 Cupcakes Rainbow",
+            description: "Détail des décorations colorées et créatives"
+        },
+        {
+            src: "https://images.unsplash.com/photo-1587241321921-91a834d6d191?w=800&h=800&fit=crop",
+            title: "🌈 Cupcakes Rainbow",
+            description: "Présentation festive sur plateau élégant"
+        }
+    ],
 
-    // Event Buffets Collection
-    {
-        src: "https://images.unsplash.com/photo-1535141192574-5d4897c12636?w=800&h=800&fit=crop",
-        title: "Buffet Événement",
-        description: "Assortiment complet pour 50 personnes",
-        category: "events",
-        itemId: "event-buffets"
-    },
-    {
-        src: "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=800&h=800&fit=crop",
-        title: "Buffet Événement",
-        description: "Table sucrée pour grandes occasions",
-        category: "events",
-        itemId: "event-buffets"
-    },
-    {
-        src: "https://images.unsplash.com/photo-1571115764595-644a1f56a55c?w=800&h=800&fit=crop",
-        title: "Buffet Événement",
-        description: "Desserts variés pour célébrations",
-        category: "events",
-        itemId: "event-buffets"
-    },
+    'buffet-mariage': [
+        {
+            src: "https://images.unsplash.com/photo-1535141192574-5d4897c12636?w=800&h=800&fit=crop",
+            title: "💍 Buffet Mariage",
+            description: "Assortiment complet pour 50 personnes - gâteaux et mignardises"
+        },
+        {
+            src: "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=800&h=800&fit=crop",
+            title: "💍 Buffet Mariage",
+            description: "Table de desserts élégante avec variétés de pâtisseries"
+        },
+        {
+            src: "https://images.unsplash.com/photo-1519640110749-d3fa033d8b8b?w=800&h=800&fit=crop",
+            title: "💍 Buffet Mariage",
+            description: "Présentation raffinée pour événements spéciaux"
+        }
+    ],
 
-    // Chocolate Cakes Collection
-    {
-        src: "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=800&h=800&fit=crop",
-        title: "Gâteau Chocolat",
-        description: "Ganache riche et fruits rouges frais",
-        category: "cakes",
-        itemId: "chocolate-cakes"
-    },
-    {
-        src: "https://images.unsplash.com/photo-1571197119282-5bfa64632de8?w=800&h=800&fit=crop",
-        title: "Gâteau Chocolat",
-        description: "Mousse au chocolat et décoration artistique",
-        category: "cakes",
-        itemId: "chocolate-cakes"
-    },
-    {
-        src: "https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?w=800&h=800&fit=crop",
-        title: "Gâteau Chocolat",
-        description: "Fondant au chocolat avec garniture",
-        category: "cakes",
-        itemId: "chocolate-cakes"
-    },
+    'red-velvet': [
+        {
+            src: "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=800&h=800&fit=crop",
+            title: "❤️ Red Velvet Classic",
+            description: "Le fameux gâteau américain avec ganache cream cheese"
+        },
+        {
+            src: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=800&fit=crop",
+            title: "❤️ Red Velvet Classic",
+            description: "Texture moelleuse caractéristique du Red Velvet"
+        },
+        {
+            src: "https://images.unsplash.com/photo-1556450559-47d2e7a69f18?w=800&h=800&fit=crop",
+            title: "❤️ Red Velvet Classic",
+            description: "Décoration classique avec cream cheese frosting"
+        }
+    ],
 
-    // Kids Cupcakes Collection
-    {
-        src: "https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?w=800&h=800&fit=crop",
-        title: "Cupcakes Enfants",
-        description: "Thème licorne et arc-en-ciel magique",
-        category: "cupcakes",
-        itemId: "kids-cupcakes"
-    },
-    {
-        src: "https://images.unsplash.com/photo-1550617931-e17a7b70dce2?w=800&h=800&fit=crop",
-        title: "Cupcakes Enfants",
-        description: "Décorations amusantes et colorées",
-        category: "cupcakes",
-        itemId: "kids-cupcakes"
-    },
-    {
-        src: "https://images.unsplash.com/photo-1614707267537-b85aaf00c4b7?w=800&h=800&fit=crop",
-        title: "Cupcakes Enfants",
-        description: "Personnages et thèmes de dessins animés",
-        category: "cupcakes",
-        itemId: "kids-cupcakes"
-    }
-];
+    'cupcakes-licorne': [
+        {
+            src: "https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?w=800&h=800&fit=crop",
+            title: "🦄 Cupcakes Licorne",
+            description: "Pack de 12 cupcakes spécialement conçus pour les enfants"
+        },
+        {
+            src: "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=800&h=800&fit=crop",
+            title: "🦄 Cupcakes Licorne",
+            description: "Décoration magique avec couleurs pastel et paillettes comestibles"
+        },
+        {
+            src: "https://images.unsplash.com/photo-1558636508-e0db3814bd1d?w=800&h=800&fit=crop",
+            title: "🦄 Cupcakes Licorne",
+            description: "Thème licorne adorable qui fait le bonheur des petits"
+        }
+    ]
+};
 
 // Modal State Variables
 let currentImageIndex = 0;
 let currentFilter = 'all';
-let filteredImages = [...galleryImages];
 let currentItemImages = [];
 
 // Modal Helper Functions
@@ -302,15 +271,12 @@ function navigateCarousel(direction) {
 }
 
 function updateFilteredImages() {
-    if (currentFilter === 'all') {
-        filteredImages = [...galleryImages];
-    } else {
-        filteredImages = galleryImages.filter(img => img.category === currentFilter);
-    }
+    // This function is no longer needed with the new structure
 }
 
 function getImagesForItem(itemId) {
-    return galleryImages.filter(img => img.itemId === itemId);
+    // This function is no longer needed with the new structure
+    return [];
 }
 
 function closeModal() {
@@ -318,28 +284,27 @@ function closeModal() {
     document.body.style.overflow = 'auto';
 }
 
+function openProductCarousel(productId) {
+    if (galleryImages[productId]) {
+        currentItemImages = galleryImages[productId];
+        currentImageIndex = 0;
+        
+        modal.style.display = 'block';
+        displayModalImage(currentImageIndex);
+        document.body.style.overflow = 'hidden';
+    }
+}
+
 // Modal Event Listeners
-document.querySelectorAll('.view-btn').forEach((btn, index) => {
-    btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        
-        const card = btn.closest('.gallery-card');
-        const img = card.querySelector('img');
-        const imgSrc = img.src;
-        
-        const clickedImage = galleryImages.find(image => 
-            imgSrc.includes(image.src.split('?')[0].split('/').pop())
-        );
-        
-        if (clickedImage) {
-            currentItemImages = getImagesForItem(clickedImage.itemId);
-            currentImageIndex = currentItemImages.findIndex(img => img.src === clickedImage.src);
-            if (currentImageIndex === -1) currentImageIndex = 0;
-            
-            modal.style.display = 'block';
-            displayModalImage(currentImageIndex);
-            document.body.style.overflow = 'hidden';
-        }
+document.addEventListener('DOMContentLoaded', () => {
+    const viewButtons = document.querySelectorAll('.view-btn');
+    viewButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const productId = btn.getAttribute('data-product');
+            openProductCarousel(productId);
+        });
     });
 });
 
@@ -380,7 +345,7 @@ const originalFilterBtns = document.querySelectorAll('.filter-btn');
 originalFilterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
         currentFilter = btn.getAttribute('data-filter');
-        updateFilteredImages();
+        // Filter functionality is handled by the existing gallery filter system
     });
 });
 
