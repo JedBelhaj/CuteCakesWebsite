@@ -117,9 +117,9 @@ const currentImageSpan = document.getElementById('currentImage');
 const totalImagesSpan = document.getElementById('totalImages');
 const modalImageContainer = document.querySelector('.modal-image-container');
 
-// Gallery images data - each item now has multiple images
+// Gallery Images Database
 const galleryImages = [
-    // Birthday Cakes
+    // Birthday Cakes Collection
     {
         src: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800&h=800&fit=crop",
         title: "Gâteau d'Anniversaire",
@@ -142,7 +142,7 @@ const galleryImages = [
         itemId: "birthday-cakes"
     },
     
-    // Wedding Cakes
+    // Wedding Cakes Collection
     {
         src: "https://images.unsplash.com/photo-1558301211-0d8c8ddee6ec?w=800&h=800&fit=crop",
         title: "Gâteau de Mariage",
@@ -165,7 +165,7 @@ const galleryImages = [
         itemId: "wedding-cakes"
     },
 
-    // Cupcakes Assorted
+    // Cupcakes Collection
     {
         src: "https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=800&h=800&fit=crop",
         title: "Cupcakes Assortis",
@@ -188,7 +188,7 @@ const galleryImages = [
         itemId: "cupcakes-assorted"
     },
 
-    // Event Buffets
+    // Event Buffets Collection
     {
         src: "https://images.unsplash.com/photo-1535141192574-5d4897c12636?w=800&h=800&fit=crop",
         title: "Buffet Événement",
@@ -211,7 +211,7 @@ const galleryImages = [
         itemId: "event-buffets"
     },
 
-    // Chocolate Cakes
+    // Chocolate Cakes Collection
     {
         src: "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=800&h=800&fit=crop",
         title: "Gâteau Chocolat",
@@ -234,7 +234,7 @@ const galleryImages = [
         itemId: "chocolate-cakes"
     },
 
-    // Kids Cupcakes
+    // Kids Cupcakes Collection
     {
         src: "https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?w=800&h=800&fit=crop",
         title: "Cupcakes Enfants",
@@ -258,18 +258,18 @@ const galleryImages = [
     }
 ];
 
+// Modal State Variables
 let currentImageIndex = 0;
 let currentFilter = 'all';
 let filteredImages = [...galleryImages];
-let currentItemImages = []; // Images for the current gallery item
+let currentItemImages = [];
 
-// Update total images count
+// Modal Helper Functions
 function updateImageCounter() {
     totalImagesSpan.textContent = currentItemImages.length;
     currentImageSpan.textContent = currentImageIndex + 1;
 }
 
-// Display image in modal
 function displayModalImage(index, direction = 'none') {
     const image = currentItemImages[index];
     if (!image) return;
@@ -291,7 +291,6 @@ function displayModalImage(index, direction = 'none') {
     updateImageCounter();
 }
 
-// Navigate carousel
 function navigateCarousel(direction) {
     if (direction === 'next') {
         currentImageIndex = (currentImageIndex + 1) % currentItemImages.length;
@@ -302,7 +301,6 @@ function navigateCarousel(direction) {
     }
 }
 
-// Filter images based on current filter
 function updateFilteredImages() {
     if (currentFilter === 'all') {
         filteredImages = [...galleryImages];
@@ -311,31 +309,30 @@ function updateFilteredImages() {
     }
 }
 
-// Get all images for a specific item
 function getImagesForItem(itemId) {
     return galleryImages.filter(img => img.itemId === itemId);
 }
 
-// Open modal when view button is clicked
+function closeModal() {
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+// Modal Event Listeners
 document.querySelectorAll('.view-btn').forEach((btn, index) => {
     btn.addEventListener('click', (e) => {
         e.stopPropagation();
         
-        // Get the clicked gallery item
         const card = btn.closest('.gallery-card');
         const img = card.querySelector('img');
         const imgSrc = img.src;
         
-        // Find the clicked image in galleryImages array
         const clickedImage = galleryImages.find(image => 
             imgSrc.includes(image.src.split('?')[0].split('/').pop())
         );
         
         if (clickedImage) {
-            // Get all images for this item
             currentItemImages = getImagesForItem(clickedImage.itemId);
-            
-            // Find the index of the clicked image within this item's images
             currentImageIndex = currentItemImages.findIndex(img => img.src === clickedImage.src);
             if (currentImageIndex === -1) currentImageIndex = 0;
             
@@ -346,11 +343,11 @@ document.querySelectorAll('.view-btn').forEach((btn, index) => {
     });
 });
 
-// Carousel navigation
+// Carousel Navigation
 carouselNext.addEventListener('click', () => navigateCarousel('next'));
 carouselPrev.addEventListener('click', () => navigateCarousel('prev'));
 
-// Keyboard navigation
+// Keyboard Navigation
 document.addEventListener('keydown', (e) => {
     if (modal.style.display === 'block') {
         switch(e.key) {
@@ -370,22 +367,15 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// Close modal
-const closeModal = () => {
-    modal.style.display = 'none';
-    document.body.style.overflow = 'auto';
-};
-
+// Modal Close Events
 modalClose.addEventListener('click', closeModal);
-
-// Close modal when clicking backdrop
 modal.addEventListener('click', (e) => {
     if (e.target === modal || e.target.classList.contains('modal-backdrop')) {
         closeModal();
     }
 });
 
-// Update filter tracking
+// Update Filter Tracking
 const originalFilterBtns = document.querySelectorAll('.filter-btn');
 originalFilterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -394,7 +384,11 @@ originalFilterBtns.forEach(btn => {
     });
 });
 
-// Parallax effect for hero section
+/* ========================================
+   5. VISUAL EFFECTS & ANIMATIONS
+   ======================================== */
+
+// Parallax Effect for Hero Section
 window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
     const hero = document.querySelector('.hero');
@@ -411,7 +405,7 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Scroll animations for service cards
+// Scroll Animations for Service Cards
 const serviceObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -426,7 +420,40 @@ document.querySelectorAll('.service-card').forEach(card => {
     serviceObserver.observe(card);
 });
 
-// WhatsApp button pulse effect
+// Enhanced Scroll Indicator
+const scrollIndicator = document.querySelector('.scroll-indicator');
+if (scrollIndicator) {
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const heroHeight = document.querySelector('.hero').offsetHeight;
+        
+        if (scrolled > heroHeight * 0.8) {
+            scrollIndicator.style.opacity = '0';
+        } else {
+            scrollIndicator.style.opacity = '1';
+        }
+    });
+}
+
+// Smooth Reveal Animations
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+        }
+    });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.section-title, .section-subtitle, .gallery-item, .contact-method').forEach(el => {
+    el.classList.add('reveal');
+    revealObserver.observe(el);
+});
+
+/* ========================================
+   6. WHATSAPP INTEGRATION
+   ======================================== */
+
+// WhatsApp Button Pulse Effect
 const whatsappBtn = document.querySelector('.whatsapp-btn');
 if (whatsappBtn) {
     setInterval(() => {
@@ -437,16 +464,14 @@ if (whatsappBtn) {
     }, 5000);
 }
 
-// Form submission (if you add a contact form later)
+// Form Submission Handler (for future contact forms)
 function handleFormSubmission(form) {
     form.addEventListener('submit', (e) => {
         e.preventDefault();
         
-        // Get form data
         const formData = new FormData(form);
         const data = Object.fromEntries(formData);
         
-        // Create WhatsApp message
         const message = `Nouvelle demande de contact:
 Nom: ${data.name}
 Email: ${data.email}
@@ -457,7 +482,11 @@ Message: ${data.message}`;
     });
 }
 
-// Lazy loading for images
+/* ========================================
+   7. PERFORMANCE OPTIMIZATIONS
+   ======================================== */
+
+// Lazy Loading for Images
 const imageObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -473,115 +502,7 @@ document.querySelectorAll('img').forEach(img => {
     imageObserver.observe(img);
 });
 
-// Add smooth reveal animations
-const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('revealed');
-        }
-    });
-}, { threshold: 0.1 });
-
-// Add reveal class to elements that should animate
-document.querySelectorAll('.section-title, .section-subtitle, .gallery-item, .contact-method').forEach(el => {
-    el.classList.add('reveal');
-    revealObserver.observe(el);
-});
-
-// Add CSS for reveal animation
-const style = document.createElement('style');
-style.textContent = `
-.reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s ease;
-}
-
-.reveal.revealed {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.pulse-effect {
-    animation: buttonPulse 1s ease-in-out;
-}
-
-@keyframes buttonPulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
-}
-
-.nav-menu.active {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(20px);
-    padding: 20px;
-    box-shadow: 0 5px 20px rgba(255, 154, 162, 0.1);
-    border-radius: 0 0 20px 20px;
-    animation: slideDown 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    gap: 20px;
-}
-
-.nav-toggle.active span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-}
-
-.nav-toggle.active span:nth-child(2) {
-    opacity: 0;
-    transform: scaleX(0);
-}
-
-.nav-toggle.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
-}
-
-@keyframes slideDown {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@media (max-width: 768px) {
-    .nav-menu {
-        display: none;
-    }
-}
-
-.img.loaded {
-    opacity: 1;
-    transition: opacity 0.3s ease;
-}
-`;
-
-document.head.appendChild(style);
-
-// Enhanced scroll indicator
-const scrollIndicator = document.querySelector('.scroll-indicator');
-if (scrollIndicator) {
-    window.addEventListener('scroll', () => {
-        const scrolled = window.pageYOffset;
-        const heroHeight = document.querySelector('.hero').offsetHeight;
-        
-        if (scrolled > heroHeight * 0.8) {
-            scrollIndicator.style.opacity = '0';
-        } else {
-            scrollIndicator.style.opacity = '1';
-        }
-    });
-}
-
-// Performance optimization: Debounce scroll events
+// Performance Optimization: Debounce Scroll Events
 function debounce(func, wait) {
     let timeout;
     return function executedFunction(...args) {
@@ -594,14 +515,17 @@ function debounce(func, wait) {
     };
 }
 
-// Apply debouncing to scroll events
 const debouncedScrollHandler = debounce(() => {
-    // Your scroll handling code here
+    // Additional scroll handling if needed
 }, 10);
 
 window.addEventListener('scroll', debouncedScrollHandler);
 
-// Add loading states for dynamic content
+/* ========================================
+   8. UTILITY FUNCTIONS
+   ======================================== */
+
+// Loading States for Dynamic Content
 function showLoading(element) {
     element.innerHTML = '<div class="loading-spinner"></div>';
 }
@@ -610,7 +534,7 @@ function hideLoading(element, content) {
     element.innerHTML = content;
 }
 
-// Error handling for images
+// Error Handling for Images
 document.querySelectorAll('img').forEach(img => {
     img.addEventListener('error', function() {
         this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxOCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkltYWdlIG5vbiBkaXNwb25pYmxlPC90ZXh0Pjwvc3ZnPg==';
@@ -618,4 +542,18 @@ document.querySelectorAll('img').forEach(img => {
     });
 });
 
+/* ========================================
+   9. INITIALIZATION & DEBUG
+   ======================================== */
+
+// Initialize the application
 console.log('🎂 Cute Cake - Site initialisé avec succès!');
+
+// Debug information (development only)
+if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+    console.log('📊 Debug Info:', {
+        galleryImagesCount: galleryImages.length,
+        categoriesFound: [...new Set(galleryImages.map(img => img.category))],
+        itemIdsFound: [...new Set(galleryImages.map(img => img.itemId))]
+    });
+}
