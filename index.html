@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cute Cake - Médenine | Gâteaux Artisanaux</title>
+    <meta name="description" content="Cute Cake - Pâtisserie artisanale à Médenine - Gâteaux personnalisés, cupcakes, pâtisseries pour événements. Commandez via WhatsApp!">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Loading Animation -->
+    <div id="loader" class="loader">
+        <div class="cake-loader">
+            <div class="cake-base"></div>
+            <div class="cake-layer"></div>
+            <div class="cake-layer"></div>
+            <div class="cake-top"></div>
+            <div class="candle"></div>
+            <div class="flame"></div>
+        </div>
+        <p>Préparation de vos délices...</p>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <i class="fas fa-birthday-cake"></i>
+                <span>Cute Cake</span>
+            </div>
+            <div class="nav-menu">
+                <a href="#home" class="nav-link">Accueil</a>
+                <a href="#gallery" class="nav-link">Galerie</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-bg">
+            <div class="floating-element cake1"><i class="fas fa-birthday-cake"></i></div>
+            <div class="floating-element cupcake1"><i class="fas fa-cookie-bite"></i></div>
+            <div class="floating-element heart1"><i class="fas fa-heart"></i></div>
+            <div class="floating-element star1"><i class="fas fa-star"></i></div>
+            <div class="floating-element cake2"><i class="fas fa-birthday-cake"></i></div>
+            <div class="floating-element cupcake2"><i class="fas fa-cookie-bite"></i></div>
+            <div class="floating-element heart2"><i class="fas fa-heart"></i></div>
+            <div class="floating-element star2"><i class="fas fa-star"></i></div>
+            <div class="floating-element donut1"><i class="fas fa-circle"></i></div>
+            <div class="floating-element candy1"><i class="fas fa-candy-cane"></i></div>
+            <div class="floating-element ice-cream1"><i class="fas fa-ice-cream"></i></div>
+            <div class="floating-element cherry1"><i class="fas fa-cherry"></i></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="title-line">Cute</span>
+                <span class="title-line gradient-text">Cake</span>
+            </h1>
+            <p class="hero-subtitle">Des créations sucrées artisanales qui éveillent vos sens</p>
+            <p class="hero-location"><i class="fas fa-map-marker-alt"></i> Médenine, Tunisie</p>
+            
+            <div class="hero-buttons">
+                <a href="#gallery" class="btn btn-primary">
+                    <i class="fas fa-images"></i>
+                    Découvrir nos créations
+                </a>
+                <a href="https://wa.me/21612345678?text=Bonjour! Je souhaiterais commander un gâteau." 
+                   class="btn btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                    Commander maintenant
+                </a>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nos Spécialités</h2>
+                <p class="section-subtitle">Chaque création est unique et faite avec amour</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-icon">
+                        <i class="fas fa-birthday-cake"></i>
+                    </div>
+                    <h3>Gâteaux Personnalisés</h3>
+                    <p>Gâteaux d'anniversaire, mariage, et événements spéciaux créés selon vos désirs</p>
+                    <div class="service-features">
+                        <span class="feature-tag">Sur mesure</span>
+                        <span class="feature-tag">Tous thèmes</span>
+                    </div>
+                </div>
+                
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon">
+                        <i class="fas fa-cookie-bite"></i>
+                    </div>
+                    <h3>Cupcakes & Mignardises</h3>
+                    <p>Petites douceurs parfaites pour vos réceptions et moments de partage</p>
+                    <div class="service-features">
+                        <span class="feature-tag">Variétés</span>
+                        <span class="feature-tag">Événements</span>
+                    </div>
+                </div>
+                
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-icon">
+                        <i class="fas fa-glass-cheers"></i>
+                    </div>
+                    <h3>Événements</h3>
+                    <p>Buffets sucrés complets pour mariages, anniversaires et célébrations</p>
+                    <div class="service-features">
+                        <span class="feature-tag">Mariages</span>
+                        <span class="feature-tag">Buffets</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Galerie de nos Créations</h2>
+                <p class="section-subtitle">Découvrez quelques-unes de nos plus belles réalisations</p>
+            </div>
+            
+            <div class="gallery-filter">
+                <button class="filter-btn active" data-filter="all">Tout</button>
+                <button class="filter-btn" data-filter="cakes">Gâteaux</button>
+                <button class="filter-btn" data-filter="cupcakes">Cupcakes</button>
+                <button class="filter-btn" data-filter="events">Événements</button>
+            </div>
+            
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- Cake images -->
+                <div class="gallery-item" data-category="cakes">
+                    <div class="gallery-card">
+                        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&h=500&fit=crop" 
+                             alt="Gâteau d'anniversaire élégant" loading="lazy">
+                        <div class="gallery-overlay">
+                            <h4>Gâteau d'Anniversaire</h4>
+                            <p>Trois étages, décoration florale</p>
+                            <button class="view-btn"><i class="fas fa-eye"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="cakes">
+                    <div class="gallery-card">
+                        <img src="https://images.unsplash.com/photo-1558301211-0d8c8ddee6ec?w=500&h=500&fit=crop" 
+                             alt="Gâteau de mariage" loading="lazy">
+                        <div class="gallery-overlay">
+                            <h4>Gâteau de Mariage</h4>
+                            <p>Design romantique, roses en sucre</p>
+                            <button class="view-btn"><i class="fas fa-eye"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="cupcakes">
+                    <div class="gallery-card">
+                        <img src="https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=500&h=500&fit=crop" 
+                             alt="Cupcakes colorés" loading="lazy">
+                        <div class="gallery-overlay">
+                            <h4>Cupcakes Assortis</h4>
+                            <p>Différentes saveurs et décorations</p>
+                            <button class="view-btn"><i class="fas fa-eye"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="events">
+                    <div class="gallery-card">
+                        <img src="https://images.unsplash.com/photo-1535141192574-5d4897c12636?w=500&h=500&fit=crop" 
+                             alt="Buffet événement" loading="lazy">
+                        <div class="gallery-overlay">
+                            <h4>Buffet Événement</h4>
+                            <p>Assortiment pour 50 personnes</p>
+                            <button class="view-btn"><i class="fas fa-eye"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="cakes">
+                    <div class="gallery-card">
+                        <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=500&h=500&fit=crop" 
+                             alt="Gâteau chocolat" loading="lazy">
+                        <div class="gallery-overlay">
+                            <h4>Gâteau Chocolat</h4>
+                            <p>Ganache et fruits rouges</p>
+                            <button class="view-btn"><i class="fas fa-eye"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="cupcakes">
+                    <div class="gallery-card">
+                        <img src="https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?w=500&h=500&fit=crop" 
+                             alt="Cupcakes thème enfant" loading="lazy">
+                        <div class="gallery-overlay">
+                            <h4>Cupcakes Enfants</h4>
+                            <p>Thème licorne et arc-en-ciel</p>
+                            <button class="view-btn"><i class="fas fa-eye"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Comment ça marche ?</h2>
+                <p class="section-subtitle">Un processus simple pour vos commandes personnalisées</p>
+            </div>
+            
+            <div class="process-steps">
+                <div class="process-step" data-aos="fade-right" data-aos-delay="100">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Contactez-nous</h3>
+                        <p>Envoyez-nous un message WhatsApp avec vos idées et préférences</p>
+                    </div>
+                </div>
+                
+                <div class="process-step" data-aos="fade-right" data-aos-delay="200">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Consultation</h3>
+                        <p>Nous discutons ensemble du design, taille, saveurs et budget</p>
+                    </div>
+                </div>
+                
+                <div class="process-step" data-aos="fade-right" data-aos-delay="300">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Création</h3>
+                        <p>Nous préparons votre commande avec soin et attention aux détails</p>
+                    </div>
+                </div>
+                
+                <div class="process-step" data-aos="fade-right" data-aos-delay="400">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Livraison</h3>
+                        <p>Récupération en boutique ou livraison à domicile à Médenine</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h2>Contactez-nous</h2>
+                    <p>Prêt à commander votre gâteau de rêve ? Nous sommes là pour vous aider !</p>
+                    
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <div class="contact-icon">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>WhatsApp</h4>
+                                <p>+216 12 345 678</p>
+                                <a href="https://wa.me/21612345678?text=Bonjour! Je souhaiterais commander un gâteau." 
+                                   class="contact-link">Envoyer un message</a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Adresse</h4>
+                                <p>Avenue Habib Bourguiba<br>Médenine, Tunisie</p>
+                                <a href="https://maps.google.com/?q=Médenine,Tunisia" target="_blank" class="contact-link">
+                                    Voir sur Google Maps
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Horaires</h4>
+                                <p>Lun - Sam: 8h00 - 20h00<br>Dim: 10h00 - 18h00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-map">
+                    <div class="map-container">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3300.123456789!2d10.123456!3d33.123456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sMedenine%2C%20Tunisia!5e0!3m2!1sen!2s!4v1234567890"
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <i class="fas fa-birthday-cake"></i>
+                        <span>Cute Cake</span>
+                    </div>
+                    <p>Des créations sucrées qui marquent vos moments précieux</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-quick-order">
+                    <h4>Commande Rapide</h4>
+                    <a href="https://wa.me/21612345678?text=Bonjour! Je souhaiterais commander un gâteau." 
+                       class="quick-order-btn">
+                        <i class="fab fa-whatsapp"></i>
+                        Commander via WhatsApp
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Cute Cake - Médenine. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <div class="whatsapp-float">
+        <a href="https://wa.me/21612345678?text=Bonjour! Je souhaiterais commander un gâteau." 
+           class="whatsapp-btn" title="Commander via WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+            <span class="whatsapp-pulse"></span>
+        </a>
+    </div>
+
+    <!-- Image Modal with Carousel -->
+    <div id="imageModal" class="modal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            
+            <!-- Carousel Navigation -->
+            <button class="carousel-nav carousel-prev">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="carousel-nav carousel-next">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            
+            <!-- Image Container -->
+            <div class="modal-image-container">
+                <img src="" alt="" id="modalImage">
+            </div>
+            
+            <!-- Image Info -->
+            <div class="modal-info">
+                <h3 id="modalTitle"></h3>
+                <p id="modalDescription"></p>
+                <div class="modal-meta">
+                    <span class="image-counter">
+                        <span id="currentImage">1</span> / <span id="totalImages">6</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
